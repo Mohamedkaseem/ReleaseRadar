@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-17T16:06:16.392Z",
+  "provider": "Groq",
+  "model": "openai/gpt-oss-120b",
+  "results": [
+    {
+      "candidate": "breaking",
+      "id": "ba855f15-a9d1-4230-8d5e-95a8b7d0023d",
+      "status": "completed",
+      "verdict": "blocked",
+      "expected": "blocked",
+      "passed": true,
+      "tests": [
+        {
+          "test": "checkout",
+          "status": "failed"
+        },
+        {
+          "test": "identity-contract",
+          "status": "failed"
+        }
+      ],
+      "retryEvents": 0,
+      "durationMs": 5570
+    },
+    {
+      "candidate": "fixed",
+      "id": "5d62c17f-ce38-4dc7-b025-5b5c27062d29",
+      "status": "completed",
+      "verdict": "checks-passed",
+      "expected": "checks-passed",
+      "passed": true,
+      "tests": [
+        {
+          "test": "checkout",
+          "status": "passed"
+        },
+        {
+          "test": "identity-contract",
+          "status": "passed"
+        }
+      ],
+      "retryEvents": 1,
+      "durationMs": 9566
+    }
+  ]
+}

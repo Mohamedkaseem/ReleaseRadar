@@ -1,0 +1,17 @@
+services:
+  falkordb:
+    image: falkordb/falkordb:v4.14.11
+    ports:
+      - "127.0.0.1:6387:6379"
+      - "127.0.0.1:3007:3000"
+    environment:
+      REDIS_ARGS: "--appendonly yes --appendfsync everysec"
+    volumes:
+      - release_radar_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+volumes:
+  release_radar_data:

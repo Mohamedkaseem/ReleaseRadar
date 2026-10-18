@@ -1,0 +1,123 @@
+{
+  "at": "2026-10-16T08:38:09.185Z",
+  "mode": "guided",
+  "note": "Synthetic fixture evaluation. This does not compare against a retrieval baseline or establish general-repository accuracy.",
+  "passed": 6,
+  "total": 6,
+  "results": [
+    {
+      "scenario": "breaking",
+      "correct": true,
+      "expected": {
+        "candidate": "breaking",
+        "verdict": "blocked",
+        "services": [
+          "identity",
+          "orders",
+          "checkout"
+        ]
+      },
+      "actual": {
+        "verdict": "blocked",
+        "services": [
+          "checkout",
+          "identity",
+          "orders"
+        ]
+      },
+      "durationMs": 638,
+      "reportId": "f4c1bed8-3057-4e06-8dc1-28ac8337b8c0"
+    },
+    {
+      "scenario": "fixed",
+      "correct": true,
+      "expected": {
+        "candidate": "fixed",
+        "verdict": "checks-passed",
+        "services": []
+      },
+      "actual": {
+        "verdict": "checks-passed",
+        "services": []
+      },
+      "durationMs": 1470,
+      "reportId": "5bd4f615-10a6-4ac3-9b29-d8eaca798a9b"
+    },
+    {
+      "scenario": "additive",
+      "correct": true,
+      "expected": {
+        "candidate": "additive",
+        "verdict": "checks-passed",
+        "services": []
+      },
+      "actual": {
+        "verdict": "checks-passed",
+        "services": []
+      },
+      "durationMs": 1007,
+      "reportId": "e4517705-6053-4503-971d-4a83a9fd2858"
+    },
+    {
+      "scenario": "type-change",
+      "correct": true,
+      "expected": {
+        "candidate": "type-change",
+        "verdict": "blocked",
+        "services": [
+          "identity",
+          "orders",
+          "checkout"
+        ]
+      },
+      "actual": {
+        "verdict": "blocked",
+        "services": [
+          "checkout",
+          "identity",
+          "orders"
+        ]
+      },
+      "durationMs": 993,
+      "reportId": "7f91aa79-54a7-4ef9-90a2-4c64158792a8"
+    },
+    {
+      "scenario": "incomplete",
+      "correct": true,
+      "expected": {
+        "candidate": "incomplete",
+        "verdict": "blocked",
+        "services": [
+          "identity",
+          "orders",
+          "checkout"
+        ]
+      },
+      "actual": {
+        "verdict": "blocked",
+        "services": [
+          "checkout",
+          "identity",
+          "orders"
+        ]
+      },
+      "durationMs": 980,
+      "reportId": "81028790-990b-4279-81ae-26c816d39616"
+    },
+    {
+      "scenario": "unrelated",
+      "correct": true,
+      "expected": {
+        "candidate": "unrelated",
+        "verdict": "checks-passed",
+        "services": []
+      },
+      "actual": {
+        "verdict": "checks-passed",
+        "services": []
+      },
+      "durationMs": 1329,
+      "reportId": "7c21ed07-20a2-454b-b6c4-67e2a6a41d09"
+    }
+  ]
+}

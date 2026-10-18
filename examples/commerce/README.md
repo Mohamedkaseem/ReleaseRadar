@@ -1,0 +1,1 @@
+These are locally authored, synthetic commerce snapshots. Manifests explicitly declare dependencies; this version does not infer all dependencies from arbitrary source code. The fixed verification runner starts three real loopback HTTP servers and executes the selected check. Ownership teams and customer data are fictional.

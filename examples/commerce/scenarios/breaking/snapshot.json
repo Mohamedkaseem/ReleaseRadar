@@ -1,0 +1,120 @@
+{
+  "label": "Breaking rename",
+  "description": "customerId was replaced by id. Orders still expects the original field.",
+  "complete": true,
+  "services": [
+    {
+      "id": "identity",
+      "name": "Identity",
+      "team": "Platform",
+      "criticality": "high",
+      "source": "examples/commerce/shared/services.ts"
+    },
+    {
+      "id": "orders",
+      "name": "Orders",
+      "team": "Commerce",
+      "criticality": "high",
+      "source": "examples/commerce/shared/services.ts"
+    },
+    {
+      "id": "checkout",
+      "name": "Checkout",
+      "team": "Payments",
+      "criticality": "high",
+      "source": "examples/commerce/shared/services.ts"
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "identity.customer",
+      "serviceId": "identity",
+      "method": "GET",
+      "route": "/customers/:id",
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "orders.create",
+      "serviceId": "orders",
+      "method": "POST",
+      "route": "/orders",
+      "fields": [
+        {
+          "name": "orderId",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "internalTag",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "checkout.complete",
+      "serviceId": "checkout",
+      "method": "POST",
+      "route": "/checkout",
+      "fields": [
+        {
+          "name": "status",
+          "type": "string",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "caller": "orders",
+      "provider": "identity",
+      "endpointId": "identity.customer",
+      "fields": ["customerId"],
+      "source": "examples/commerce/shared/services.ts"
+    },
+    {
+      "caller": "checkout",
+      "provider": "orders",
+      "endpointId": "orders.create",
+      "fields": ["orderId"],
+      "source": "examples/commerce/shared/services.ts"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "purchase",
+      "name": "Complete a purchase",
+      "services": ["checkout"]
+    },
+    {
+      "id": "customer-profile",
+      "name": "Read customer profile",
+      "services": ["identity"]
+    }
+  ],
+  "tests": [
+    {
+      "id": "checkout",
+      "name": "Checkout integration",
+      "workflowId": "purchase"
+    },
+    {
+      "id": "identity-contract",
+      "name": "Identity response contract",
+      "workflowId": "customer-profile"
+    }
+  ],
+  "revision": "breaking"
+}
